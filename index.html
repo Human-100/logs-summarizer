@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id='btnGiveCommand'>Give Command!</button>
+    <br><br>
+    <span id='message'></span>
+    <br><br>
+    
+    <!-- <input id='chkSteve' type="checkbox"> Steve Rogers
+    <br>
+    <input id='chkTony' type="checkbox"> Tony Stark
+    <br>
+    <input id='chkBruce' type="checkbox"> Bruce Banner
+    <br>
+    <input id='chkNick' type="checkbox"> Nick Fury -->
+    
+    <script>
+   const speak = (text)=>{
+   const text_speak = new SpeechSynthesisUtterance(text);
+
+   text_speak.rate = 1;
+   text_speak.volume = 1;
+   text_speak.pitch = 1;
+   voices = window.speechSynthesis.getVoices()
+   text_speak.voice = voices[10000];
+//    text_speak.lang = voices[11110].lang;
+   
+
+   window.speechSynthesis.speak(text_speak);  
+}
+// end of speaking engine
+
+// window.onload = function(){
+//     speak('Hi there master, How can i help u today');
+
+// }
+
+        var message = document.querySelector('#message');
+
+        var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+        var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
+
+        var grammar = '#JSGF V1.0;' 
+        var recognition = new SpeechRecognition();
+        var speechRecognitionList = new SpeechGrammarList();
+        speechRecognitionList.addFromString(grammar, 1);
+        recognition.grammars = speechRecognitionList;
+        recognition.lang = 'en-US';
+        recognition.interimResults = false;
+        recognition.continuous = false;
+
+        recognition.onresult = function(event) {
+            var last = event.results.length - 1;
+            var command = event.results[last][0].transcript;
+            message.textContent = 'Voice Input: ' + command + '.';
+
+
+            if(command.toLowerCase().includes('how are you') === true){
+                speak("i am fine, thank you");
+            }
+            else if (command.toLowerCase().includes('open youtube') === true){
+                speak("opening youtube...");
+                window.open('https://www.youtube.com/','_blank');
+                
+            }
+            else if (command.toLowerCase().includes('set a timer') === true){
+                speak("timer set for 10 sec");
+                setTimeout(() => { speak("ting ting ting timer is over"); }, 10000);
+                
+            }
+            else if (command.toLowerCase().includes('who created you') === true || command.toLowerCase().includes('who made you') === true){
+                speak("I was made by Hanaan a Web Developer, if you wanna know more about him Here is his portfolio.");
+                setTimeout(() => { window.open('https://hanan-marghoob.rf.gd/?i=1','_blank'); }, 5000);
+                
+            }
+            else if (command.toLowerCase().includes('set a timer') === true){
+                var audio = new Audio('audio_file.mp3');
+                audio.play();
+
+
+            }
+                else{
+                speak(command);
+            }
+            speak('Whats Next!');
+            // click()
+            
+            
+            // else if (command.toLowerCase() === 'select bruce'){
+            //     document.querySelector('#chkBruce').checked = true;
+            // }
+            // else if (command.toLowerCase() === 'select nick'){
+            //     document.querySelector('#chkNick').checked = true;
+            // }   
+        };
+
+        recognition.onspeechend = function() {
+            recognition.stop();
+           
+        };
+
+        recognition.onerror = function(event) {
+            message.textContent = 'Error occurred in recognition: ' + event.error;
+        }        
+
+        document.querySelector('#btnGiveCommand').addEventListener('click', function(){
+            recognition.start();
+
+        });
+        function click(){
+            document.querySelector('#btnGiveCommand').click();
+        }
+
+
+    </script>
+</body>
+</html>
