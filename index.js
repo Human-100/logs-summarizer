@@ -19,14 +19,23 @@ async function analyzeLogs(logs) {
         const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
         const prompt = `
-            Analyze the following logs and provide:
-            1. A **brief summary** of the logs.
-            2. Any **errors, inefficiencies, or performance issues** found in the logs.
-            3. **Solutions or improvements** to fix the inefficiencies.
-            
-            Logs:
-            ${logs}
-        `;
+Analyze the following logs and provide:
+
+1. Brief Summary:
+   - Provide a short summary of the logs.
+
+2. Errors, Inefficiencies, or Performance Issues:
+   - List any errors, inefficiencies, or performance issues found in the logs.
+
+3. Solutions or Improvements:
+   - Suggest solutions or improvements to fix the identified issues.
+
+4. dont use * in the beginning or end of any line also dont make the repsone in markdown style but in well structiured doucment style
+
+Logs:
+${logs}
+`;
+
 
         const result = await model.generateContent(prompt);
         const response = await result.response;
