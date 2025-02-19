@@ -30,7 +30,7 @@ Analyze the following logs and provide:
 3. Solutions or Improvements:
    - Suggest solutions or improvements to fix the identified issues.
 
-4. dont use * in the beginning or end of any line also dont make the repsone in markdown style but in well structiured doucment style
+4. dont use * in the beginning or end of any line
 
 Logs:
 ${logs}
