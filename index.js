@@ -46,6 +46,13 @@ ${logs}
     }
 }
 
+app.get('/', async (req, res) => {
+res.send("Its working")
+
+})
+
+
+
 // **Change from GET to POST**
 app.post('/analyze', async (req, res) => {
     try {
