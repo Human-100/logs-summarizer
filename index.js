@@ -22,15 +22,15 @@ async function analyzeLogs(logs) {
 Analyze the following logs and provide:
 
 1. Brief Summary:
-   - Provide a short summary of the logs.
+   - Provide a brief summary of the logs.
 
 2. Errors, Inefficiencies, or Performance Issues:
-   - List any errors, inefficiencies, or performance issues found in the logs.
+   - List any errors, inefficiencies, or performance issues found in the logs. But focus on latest logs more and not the ones that are more than one month old.
 
 3. Solutions or Improvements:
-   - Suggest solutions or improvements to fix the identified issues.
+   - Suggest solutions or improvements to fix the identified issues. But focus on latest logs more and not the ones that are more than one month old.
 
-4. dont use * in the beginning or end of any line
+4. dont use * or # in the beginning or end of any line
 
 Logs:
 ${logs}
