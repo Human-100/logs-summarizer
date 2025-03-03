@@ -16,7 +16,7 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 
 async function analyzeLogs(logs) {
     try {
-        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
         const prompt = `
 Analyze the following logs and provide:
